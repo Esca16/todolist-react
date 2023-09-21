@@ -7,11 +7,18 @@ export const ToDoContext = createContext();
 
 const ToDoProvider = ({ children }) => {
     const [todos, setTodos] = useState([]);
+    const [completedToDos, setCompletedToDos] = useState([]);
+    const [isCompletedFilter, setIsCompletedFilter] = useState(false);
 
     useEffect(() => {
         const IsToDos = JSON.parse(localStorage.getItem("st_r_d"));
         IsToDos && setTodos([...IsToDos]);
     }, [])
+
+    useEffect(() => {
+        const filterCompleted = todos.filter((todo) => todo.completed);
+        setCompletedToDos([...filterCompleted]);
+    }, [todos])
 
     const addToDo = (newTodo) => {
         newTodo.id = uuidv4();
@@ -37,7 +44,7 @@ const ToDoProvider = ({ children }) => {
         localStorage.setItem("st_r_d", JSON.stringify([...editedToDo]))
     }
     return (
-        <ToDoContext.Provider value={{ todos, addToDo, deleteToDo, editToDo }}>{children}</ToDoContext.Provider>
+        <ToDoContext.Provider value={{ todos, addToDo, deleteToDo, editToDo, setIsCompletedFilter, isCompletedFilter, completedToDos }}>{children}</ToDoContext.Provider>
     )
 }
 
