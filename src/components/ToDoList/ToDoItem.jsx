@@ -39,7 +39,7 @@ const ToDoItem = ({ todo }) => {
 
   return (
     <div className='flex mt-4 justify-between items-center w-full bg-slate-400 py-4 px-5'>
-      <div className='flex gap-6 items-center'>
+      <div className='flex md:gap-2 gap-6 items-center'>
         <input type="checkbox" name="chk-completed" id="chk-completed" onClick={(e) => CompleteCheckHandler(e)} defaultChecked={todo.completed ? true : false} />
         <input type="text" ref={refEditInput} defaultValue={todo.text} readOnly={isReadOnly} className={`outline-none bg-transparent w-full ${!isEditMode && todo.completed ? "line-through text-gray-200" : ""}`} onKeyUp={(e) => {
           if (e.key === "Enter") {
