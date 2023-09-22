@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <ToDoProvider>
-        <div className="bg-slate-500 w-[90%] lg:w-[60%] mx-auto px-6 py-4 mt-14">
+        <div className="bg-slate-500 w-full md:w-[80%] lg:w-[60%] mx-auto px-6 py-4 lg:mt-14">
           <ToDoForm />
           <ToDoFilter />
           <ToDoList />
